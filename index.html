@@ -1,0 +1,10 @@
+<!doctype html><html><head><meta charset="utf-8"><title>PromptPay QR</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>body{font-family:Arial;padding:20px}#qrcode{margin-top:20px}</style></head>
+<body><h2>QR ข้อความ/เลขบัญชี (ไม่ใช่ Thai PromptPay)</h2>
+<input id='txt' placeholder='กรอกข้อความหรือเลขบัญชี'><button onclick='gen()'>สร้าง</button>
+<div id='qrcode'></div>
+<script>
+function gen(){document.getElementById('qrcode').innerHTML='';
+new QRCode(document.getElementById('qrcode'),document.getElementById('txt').value);}
+</script></body></html>
