@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PromptPay QR Generator</title>
+
+<script src="https://cdn.jsdelivr.net/npm/promptpay-qr@0.5.0/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<style>
+body{
+    font-family:sans-serif;
+    background:#f4f6f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    width:350px;
+}
+input,button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+}
+canvas{
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>สร้าง QR พร้อมเพย์</h2>
+
+<input id="id" placeholder="เบอร์โทร หรือ เลขบัตรประชาชน">
+
+<input id="amount" type="number" placeholder="จำนวนเงิน (ไม่บังคับ)">
+
+<button onclick="createQR()">
+สร้าง QR
+</button>
+
+<canvas id="qrcode"></canvas>
+
+</div>
+
+<script>
+
+function createQR(){
+
+let id=document.getElementById("id").value;
+let amount=document.getElementById("amount").value;
+
+let payload=generatePayload(id,amount);
+
+QRCode.toCanvas(document.getElementById("qrcode"),payload,{
+width:260
+});
+
+}
+
+</script>
+
+</body>
+</html>
